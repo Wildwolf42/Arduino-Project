@@ -1,7 +1,7 @@
 /*
 Prototype code for an alarm system that detects
 how far away something is, then if it is below a certain
-distance, flashes a light
+distance, flashes a light and plays a soundr
 */
 
 
@@ -19,11 +19,19 @@ void setup() {
 void loop() {
   // Detects distance, then flashes light if it meets if statement
   distance();
-  if (distance() < 10)
-    digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
-    delay(1000);                       // wait for a second
-    digitalWrite(LED_BUILTIN, HIGH);    // turn the LED off by making the voltage LOW
-     delay(1000);                // wait for a second
+  if (distance() < 100)
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);                       // wait for a second
+    noTone(6);
+  // play a note on pin 6 for 100 ms:
+  tone(6, 440, 200);
+  delay(100);
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(500);                // wait for a half second
+    noTone(6);
+  // play a note on pin 6 for 100 ms:
+  tone(6, 440, 200);
+  delay(100);
 }
 
   
